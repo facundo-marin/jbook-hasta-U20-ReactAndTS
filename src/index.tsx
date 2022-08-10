@@ -38,12 +38,13 @@ const App = () => {
     });
 
     setCode(result.outputFiles[0].text);
-    try {
-      eval(result.outputFiles[0].text);
-    } catch (error) {
-      alert(error);
-    }
   };
+
+  const html = `
+    <script>
+      ${code}
+    </script>
+  `;
 
   return (
     <div>
@@ -55,14 +56,10 @@ const App = () => {
         <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
-      <iframe sandbox="" title="hola" srcDoc={html} />
+      <iframe sandbox="allow-scripts" title="hola" srcDoc={html} />
     </div>
   );
 };
-
-const html = `
-<h1>Local HTML doc</h1>
-`;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
