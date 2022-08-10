@@ -55,10 +55,14 @@ const App = () => {
         <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
-      <iframe sandbox="" title="hola" src="/test.html" />
+      <iframe sandbox="" title="hola" srcDoc={html} />
     </div>
   );
 };
+
+const html = `
+<h1>Local HTML doc</h1>
+`;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
